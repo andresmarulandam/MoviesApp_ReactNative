@@ -33,3 +33,10 @@
 2. Ejemplo:
    import {Bars3CenterLeftIcon} from "react-native-heroicons outline"
    <Bars3CenterLeftIcon size={30} color="white" strokeWidth={2} />
+
+## NAVEGACIÓN:
+
+1. npm install @react-navigation/native
+2. En el componente:
+   import { useNavigation } from '@react-navigation/native';
+   const navigation = useNavigation()
