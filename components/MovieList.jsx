@@ -10,8 +10,9 @@ import {
 import { styles } from '../theme/index';
 import { useNavigation } from '@react-navigation/native';
 
-export default function MovieList({ title, data }) {
+export default function MovieList({ title, data, hideSeeAll }) {
   const width = Dimensions.get('window').width;
+  const height = Dimensions.get('window').height;
   let movieName = 'Spidermaaaaaaaaaan';
   const navigation = useNavigation();
 
@@ -19,11 +20,13 @@ export default function MovieList({ title, data }) {
     <View className="mb-8 space-y-4">
       <View className="mx-4 flex-row justify-between items-center">
         <Text className="text-white text-xl">{title}</Text>
-        <TouchableOpacity>
-          <Text style={styles.text} className="text-lg">
-            See All
-          </Text>
-        </TouchableOpacity>
+        {!hideSeeAll && (
+          <TouchableOpacity>
+            <Text style={styles.text} className="text-lg">
+              See All
+            </Text>
+          </TouchableOpacity>
+        )}
       </View>
 
       <ScrollView
@@ -35,13 +38,13 @@ export default function MovieList({ title, data }) {
           return (
             <TouchableWithoutFeedback
               key={index}
-              onPress={() => navigation.navigate('Movie', item)}
+              onPress={() => navigation.push('Movie', item)}
             >
               <View className="space-y-1 mr-4">
                 <Image
                   source={require('../assets/prueba.jpeg')}
                   className="rounded-3xl"
-                  style={{ height: width / 2, width: width * 0.33 }}
+                  style={{ height: height * 0.25, width: width * 0.33 }}
                 />
                 <Text className="text-neutral-300 ml-1 ">
                   {movieName.length > 14

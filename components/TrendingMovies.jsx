@@ -6,6 +6,7 @@ import MovieCard from './MovieCard';
 
 export default function TrendingMovies({ data }) {
   const width = Dimensions.get('window').width;
+  const height = Dimensions.get('window').height;
   const navigation = useNavigation();
   const handleClick = (item) => {
     navigation.navigate('Movie', item);
@@ -17,7 +18,7 @@ export default function TrendingMovies({ data }) {
       <Carousel
         mode="parallax"
         width={width}
-        height={width / 2}
+        height={height / 3}
         data={data}
         scrollAnimationDuration={1000}
         renderItem={({ item }) => (
